@@ -406,8 +406,31 @@ def update_profile_personal():
     session['user_data']['age'] = age
     session['user_data']['phone'] = phone
 
+
+    image_data = None
+    if 'image' in request.files:
+        image_file = request.files['image']
+        if image_file.filename:
+            file_metadata = {
+                'name': image_file.filename,
+                'parents': [PARENT_FOLDER_ID]}
+            with tempfile.NamedTemporaryFile(delete=False) as temp_file:
+                image_file.save(temp_file)
+                temp_file.seek(0)
+                file = service.files().create(
+                    body=file_metadata,
+                    media_body=MediaFileUpload(temp_file.name, mimetype=image_file.content_type),
+                ).execute()
+                file_id = file.get('id')
+            if file_id:
+                image_data = f"https://drive.google.com/thumbnail?id={file_id}&sz=w1000"
+                session['user_data']['profile_image'] = image_data
+
     email = session['user_data']['email']
-    collection.update_one({'email': email}, {'$set': {'name': name, 'surname': surname, 'age': age, 'phone': phone}})
+    update_data = {'name': name, 'surname': surname, 'company_name': age, 'phone': phone}
+    if image_data:
+        update_data['profile_image'] = image_data
+    collection.update_one({'email': email}, {'$set': update_data})
 
     return redirect('profile_student.html')
 
@@ -467,8 +490,30 @@ def update_profile_employer():
     session['user_data']['company-name'] = age
     session['user_data']['phone'] = phone
 
+    image_data = None
+    if 'image' in request.files:
+        image_file = request.files['image']
+        if image_file.filename:
+            file_metadata = {
+                'name': image_file.filename,
+                'parents': [PARENT_FOLDER_ID]}
+            with tempfile.NamedTemporaryFile(delete=False) as temp_file:
+                image_file.save(temp_file)
+                temp_file.seek(0)
+                file = service.files().create(
+                    body=file_metadata,
+                    media_body=MediaFileUpload(temp_file.name, mimetype=image_file.content_type),
+                ).execute()
+                file_id = file.get('id')
+            if file_id:
+                image_data = f"https://drive.google.com/thumbnail?id={file_id}&sz=w1000"
+                session['user_data']['profile_image'] = image_data
+
     email = session['user_data']['email']
-    collection.update_one({'email': email}, {'$set': {'name': name, 'surname': surname, 'company_name': age, 'phone': phone}})
+    update_data = {'name': name, 'surname': surname, 'company_name': age, 'phone': phone}
+    if image_data:
+        update_data['profile_image'] = image_data
+    collection.update_one({'email': email}, {'$set': update_data})
 
     return redirect('profile_employer.html')
 

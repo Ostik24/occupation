@@ -36,30 +36,36 @@
             <div class="text-container" id="personal-form-container">
                 <h2>Edit Personal and contact information</h2>
                 <form class="text-container" id="personal-form" action="/update_profile_personal" method="post" enctype="multipart/form-data">
-                    <p>Name:</p>
-                    <input type="text" name="name" id="edit-name" value="{{ user_data['name'] }}" placeholder="Enter name" required>
-                    <p>Surname:</p>
-                    <input type="text" name="surname" id="edit-surname" value="{{ user_data['surname'] }}" placeholder="Enter surname" required>
-                    <p>Age:</p>
-                    <input type="number" name="age" id="edit-age" value="{{ user_data['age'] }}" placeholder="Enter age" onchange="validateAge()" required>
-                    <p>Phone number: </p>
-                    <input type="text" name="phone-number" id="edit-phone" value="{{ user_data['phone'] if 'phone' in user_data else ''}}" onchange="validatePhoneNumber()" placeholder="Enter your phone number">
-                    <p>Email address: <span style="font-weight: 590; color: rgb(128, 58, 21);">{{ user_data['email'] }}</span></p>
-                    <!-- <p>Email address:</p>
-                    <input type="text" name="email" id="edit-email" value="{{ user_data['email'] }}" placeholder="Enter age"> -->
-                    <button class="save-button" type="submit"><img style="height: 10px"src="\static\save.svg">          Save</button>
-                    <button type="button" class="out-button" style="width:100%" onclick="goBackInfo('personal')"><img style="height: 10px"src="\static\back.svg">          Back</button>
+                    <div class="text-c">
+                        <div class="text-container">
+                            <p>Name:</p>
+                            <input type="text" name="name" id="edit-name" value="{{ user_data['name'] }}" placeholder="Enter name" required>
+                            <p>Surname:</p>
+                            <input type="text" name="surname" id="edit-surname" value="{{ user_data['surname'] }}" placeholder="Enter surname" required>
+                            <p>Age:</p>
+                            <input type="text" name="age" id="edit-age" value="{{ user_data['age'] }}" placeholder="Enter age" onchange="validateAge()" required>
+                            <p>Phone number: </p>
+                            <input type="text" name="phone-number" id="edit-phone" value="{{ user_data['phone'] if 'phone' in user_data else ''}}" onchange="validatePhoneNumber()" placeholder="Enter your phone number">
+                            <p>Email address: <span style="font-weight: 590; color: rgb(128, 58, 21);">{{ user_data['email'] }}</span></p>
+                        </div>
+                        <!-- <p>Email address:</p>
+                        <input type="text" name="email" id="edit-email" value="{{ user_data['email'] }}" placeholder="Enter age"> -->
+                        <div class="profile-pic">
+                            <label class="-label" for="file">
+                            <span class="glyphicon glyphicon-camera"></span>
+                            <span>Change Image</span>
+                            </label>
+                            <input id="file" type="file" name="image" onchange="loadFile(event)" accept="image/*" />
+                            {% if user_data['profile_image'] %}
+                                <img src="{{ user_data['profile_image'] }}" id="output" width="200" />
+                            {% else %}
+                                <img src="/static/Photo.svg" id="output" width="200" />
+                            {% endif %}
+                        </div>
+                    </div>
+                    <button class="save-button" style="width: 50%" type="submit"><img style="height: 10px"src="\static\save.svg">          Save</button>
+                    <button type="button" class="out-button" style="width: 50%" onclick="goBackInfo('personal')"><img style="height: 10px"src="\static\back.svg">          Back</button>
                 </form>
-            </div>
-            <div>
-                <div class="profile-pic">
-                    <label class="-label" for="file">
-                      <span class="glyphicon glyphicon-camera"></span>
-                      <span>Change Image</span>
-                    </label>
-                    <input id="file" type="file" name="image" onchange="loadFile(event)" accept="image/*" />
-                    <img src="/static/Photo.svg" id="output" width="200" />
-                </div>
             </div>
         </div>
         <div class="info-container" id="skills-info-container">
