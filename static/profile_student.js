@@ -87,15 +87,19 @@ function validatePhoneNumber() {
 
     if (!regex.test(phoneNumberInput)) {
         alert('Please enter a valid phone number in the format +380XXXXXXXXX.');
+        return false;
         // document.getElementById('edit-phone').value = ''; // Clear the input field
     }
+    return true;
 }
 
 function validateEnglishLevel() {
     var englishLevelInput = document.getElementById('edit-english').value;
-    var regex = /^([ABC][1-2])((\+){0,1})$/;
+    var regex = /^([ABCabc][1-2])((\+){0,1})$/;
 
     if (!regex.test(englishLevelInput)) {
         alert('Please make sure to provide a valid English level in the correct format (e.g., A2+).');
+        return false;
     }
+    return true;
 }

@@ -45,8 +45,10 @@ function validatePhoneNumber() {
 
     if (!regex.test(phoneNumberInput)) {
         alert('Please enter a valid phone number in the format +380XXXXXXXXX.');
+        return false;
         // document.getElementById('edit-phone').value = ''; // Clear the input field
     }
+    return true;
 }
 function vacancyDeleter(vacancyId) {
     if (confirm('Are you sure you want to delete this vacancy?')) {

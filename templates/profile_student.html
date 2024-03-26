@@ -35,7 +35,7 @@
         <div class="info-container" id="personal-edit-container" style="display: none;">
             <div class="text-container" id="personal-form-container">
                 <h2>Edit Personal and contact information</h2>
-                <form class="text-container" id="personal-form" action="/update_profile_personal" method="post" enctype="multipart/form-data">
+                <form class="text-container" id="personal-form" action="/update_profile_personal" method="post" enctype="multipart/form-data" onsubmit="return validatePhoneNumber()">
                     <div class="text-c">
                         <div class="text-container">
                             <p>Name:</p>
@@ -43,9 +43,9 @@
                             <p>Surname:</p>
                             <input type="text" name="surname" id="edit-surname" value="{{ user_data['surname'] }}" placeholder="Enter surname" required>
                             <p>Age:</p>
-                            <input type="text" name="age" id="edit-age" value="{{ user_data['age'] }}" placeholder="Enter age" onchange="validateAge()" required>
+                            <input type="number" name="age" id="edit-age" value="{{ user_data['age'] }}" placeholder="Enter age" onchange="validateAge()" required>
                             <p>Phone number: </p>
-                            <input type="text" name="phone-number" id="edit-phone" value="{{ user_data['phone'] if 'phone' in user_data else ''}}" onchange="validatePhoneNumber()" placeholder="Enter your phone number">
+                            <input type="text" name="phone-number" id="edit-phone" value="{{ user_data['phone'] if 'phone' in user_data else ''}}" placeholder="Enter your phone number">
                             <p>Email address: <span style="font-weight: 590; color: rgb(128, 58, 21);">{{ user_data['email'] }}</span></p>
                         </div>
                         <!-- <p>Email address:</p>
@@ -82,7 +82,7 @@
         <div class="info-container" id="skills-edit-container" style="display: none;">
             <div class="text-container">
                 <h2>Edit Skills</h2>
-                <form class="text-container" style="width: 100%" id="skills-form" action="/update_profile_skills" method="post">
+                <form class="text-container" style="width: 100%" id="skills-form" action="/update_profile_skills" method="post" onsubmit="return validateEnglishLevel()">
                     <p>Education: </p>
                     <select name="degree" id="edit-education">
                         <option value="Bachelor" {% if 'Bachelor' == user_data['academic_degree'] %} selected {% endif %}>Bachelor</option>
@@ -99,7 +99,7 @@
                         <option value="no" {% if 'no' == user_data['experience_it'] %} selected {% endif %}>no</option>
                     </select>
                     <p>English level: </p>
-                    <input type="text" name="english" id="edit-english" value="{{ user_data['english'] if 'english' in user_data else ''}}" placeholder="Enter your English level" onchange="validateEnglishLevel()">
+                    <input type="text" name="english" id="edit-english" value="{{ user_data['english'] if 'english' in user_data else ''}}" placeholder="Enter your English level">
                     <p>Description: </p>
                     <div class="description-container">
                         <textarea name="description" id="description-text" oninput="autoResize(this)">{{ user_data['description'] if 'description' in user_data else '' }}</textarea>

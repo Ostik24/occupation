@@ -37,17 +37,17 @@
         <div class="info-container" id="personal-edit-container" style="display: none;">
             <div class="text-container" id="personal-form-container">
                 <h2>Edit Personal and contact information</h2>
-                <form class="text-container" id="personal-form" action="/update_profile_employer" method="post" enctype="multipart/form-data">
+                <form class="text-container" id="personal-form" action="/update_profile_employer" method="post" enctype="multipart/form-data" onsubmit="return validatePhoneNumber()">
                     <div class="text-c">
                         <div class="text-container">
                             <p>Name:</p>
-                            <input type="text" name="name" id="edit-name" value="{{ user_data['name'] }}" placeholder="Enter name" maxlength="25">
+                            <input type="text" name="name" id="edit-name" value="{{ user_data['name'] }}" placeholder="Enter name" maxlength="25" required>
                             <p>Surname:</p>
-                            <input type="text" name="surname" id="edit-surname" value="{{ user_data['surname'] }}" placeholder="Enter surname" maxlength="25">
+                            <input type="text" name="surname" id="edit-surname" value="{{ user_data['surname'] }}" placeholder="Enter surname" maxlength="25" required>
                             <p>Company name:</p>
-                            <input type="text" name="company-name" id="edit-company-name" value="{{ user_data['company_name'] }}" placeholder="Enter company name">
+                            <input type="text" name="company-name" id="edit-company-name" value="{{ user_data['company_name'] }}" placeholder="Enter company name" required>
                             <p>Phone number: </p>
-                            <input type="text" name="phone-number" id="edit-phone" value="{{ user_data['phone'] if 'phone' in user_data else ''}}" placeholder="Enter your phone number" onchange="validatePhoneNumber()">
+                            <input type="text" name="phone-number" id="edit-phone" value="{{ user_data['phone'] if 'phone' in user_data else ''}}" placeholder="Enter your phone number">
                             <p>Email address: <span style="font-weight: 590; color: rgb(128, 58, 21);">{{ user_data['email'] }}</span></p>
                         </div>
                         <div class="profile-pic">
@@ -103,21 +103,6 @@
             </div>
         </div>
         {% for vacancy in vacancies.find({'email':user_data["email"]}) %}
-        <!-- <div class="info-container">
-            <div class="vacancy">
-                <h2>{{ vacancy['job_name'] }}</h2>
-                <p style="color: rgba(196, 97, 64, 1);">Skills</p>
-                <span>{{ vacancy['skills'] }}</span>
-                <p style="color: rgba(196, 97, 64, 1);">Employment options</p>
-                <span>{{ vacancy['employment'] }}</span>
-                <p style="color: rgba(196, 97, 64, 1);">Description</p>
-                <span>{{ vacancy['description'] }}</span>
-                <div style="display: flex; flex-direction: row; justify-content: space-between;">
-                    <button class="edit-button" style="width: 25%" onclick="editVacancy()" ><img style="height: 10px"src="\static\edit.svg">          Edit</button>
-                    <button class="delete-button" ><img style="height: 10px" src="\static\delete_vacancy.svg">          Delete</button>
-                </div>
-            </div>
-        </div>                                Цей код був раніше, якщо що-->
         <div class="info-container" id="vacancy{{ loop.index }}">
             <div class="vacancy">
                 <h2>{{ vacancy['job_name'] }}</h2>

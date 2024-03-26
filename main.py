@@ -439,7 +439,7 @@ def update_profile_skills():
     # Retrieve updated data from the form
     skills = request.form['skills']
     experience = request.form['experience']
-    english = request.form['english']
+    english = request.form['english'].upper()
     degree = request.form['degree']
     description = request.form['description']
 
