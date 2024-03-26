@@ -77,20 +77,19 @@ def reset():
             msg = Message('Email Verification', recipients=[email], body = f'Your verification code is: {session["verification_code"]}')
             mail.send(msg)
 
-            types = "reset"
+            session['types'] = "reset"
 
-            return render_template('check-email.html', types=types)
+            return render_template('check-email.html', types=session['types'])
         existing_email_error = "The email is not found or passwords do not match."
         return render_template('reset-password.html', existing_email_error=existing_email_error)
 
 @app.route('/verify', methods=['GET', 'POST'])
 def verify():
-    types = request.form['types']
     if request.method == 'POST':
         entered_code = request.form['code']
         if entered_code == session.get('verification_code'):
 
-            if types == "reset":
+            if session['types'] == "reset":
                 user = collection.find_one({'email': session['email']})
                 if user:
                     collection.update_one({'_id': user['_id']}, {'$set': {'password': session["password"]}})
@@ -100,7 +99,7 @@ def verify():
                         data['_id'] = str(session['user_data']['_id'])
                     return redirect('/')
 
-            if types == 'employer':
+            if session['types'] == 'employer':
                 data = {
                 'name': session['name'],
                 'surname': session['surname'],
@@ -116,7 +115,7 @@ def verify():
                 if '_id' in session['user_data']:
                     data['_id'] = str(session['user_data']['_id'])
                 return redirect('/')
-            if types == 'student':
+            if session['types'] == 'student':
                 return redirect('/sign_up_next')
     invalid_code_error = "Your code doesn't match. Try again!"
     return render_template('check-email.html', invalid_code_error=invalid_code_error)
@@ -179,9 +178,9 @@ def register_employer():
         msg = Message('Email Verification', recipients=[session['email']], body = f'Your verification code is: {session["verification_code"]}')
         mail.send(msg)
 
-        types = "employer"
+        session['types'] = "employer"
 
-        return render_template('check-email.html', types=types)
+        return render_template('check-email.html', types=session['types'])
 
 @app.route('/submit_student1', methods=['POST'])
 def register_student1():
@@ -246,8 +245,8 @@ def register_student1():
         msg = Message('Email Verification', recipients=[session['email']], body = f'Your verification code is: {session["verification_code"]}')
         mail.send(msg)
 
-        types = "student"
-        return render_template('check-email.html', types=types)
+        session['types'] = "student"
+        return render_template('check-email.html', types=session['types'])
     return render_template('sign_up_student.html')
 
 @app.route('/submit_student2', methods=['POST'])
