@@ -1,0 +1,155 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: rgba(255, 178, 126, 1);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.backImage{
+    position: absolute;
+    right: 0;
+    top: 4%;
+    width: 50%;
+}
+.main {
+    width: 50%;
+    margin: 50px auto;
+}
+
+/* Стилі для кнопки профілю */
+.profile-button {
+    padding: 8px 16px;
+    background-color: rgba(151, 71, 45, 1); /* Колір кнопки */
+    color: #fff; /* Колір тексту */
+    border: none;
+    border-radius: 20px; /* Закруглені кути */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Плавне змінення кольору при наведенні */
+    /* position: absolute; */
+    font-weight: bolder;
+    /* z-index: 2; */
+    width: 10%;
+    height: 80%
+}
+/* .students-button {
+    padding: 8px 16px;
+    background-color: rgba(151, 71, 45, 1);
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bolder;
+    width: 10%;
+} */
+
+.main-button {
+    padding: 8px 16px;
+    background-color: rgba(151, 71, 45, 1); /* Колір кнопки */
+    color: #fff; /* Колір тексту */
+    border: none;
+    border-radius: 20px; /* Закруглені кути */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Плавне змінення кольору при наведенні */
+    /* position: absolute; */
+    font-weight: bolder;
+    /* z-index: 2; */
+    width: 12%;
+    /* margin-left: 29%;
+    margin-top: 0.8%; */
+}
+
+.signout-button {
+    padding: 8px 16px;
+    background-color: rgba(242, 80, 25, 1); /* Колір кнопки */
+    color: #fff; /* Колір тексту */
+    border: none;
+    border-radius: 20px; /* Закруглені кути */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Плавне змінення кольору при наведенні */
+    /* position: absolute; */
+    font-weight: bolder;
+    /* z-index: 2; */
+    width: 12%;
+    /* margin-left: 29%;
+    margin-top: 0.8%; */
+    /* bottom: 10%; /* Adjust bottom position */
+    /* left: 84%; */ 
+}
+
+.signout-button:hover {
+    background-color: rgba(242, 80, 25, 0.7);
+}
+button:hover {
+    background-color: rgba(197, 98, 65, 0.8);
+}
+
+.signout-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    justify-self: end;
+    /* margin-top: 10%; */
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 5%;
+}
+
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2 {
+    margin: 0;
+    color: rgba(174, 85, 55, 1);
+}
+
+.info-container {
+    padding: 2%;
+    margin-top: 2%;
+    width: 50%;
+    height: auto;
+    background-color: rgba(255, 213, 184, 0.81);
+    border-radius: 20px;
+    z-index: 2;
+    display: flex;
+    flex-direction: row;
+}
+.top-container {
+    display: flex;
+    /* align-items: center; */
+    /* justify-content: row; */
+    justify-content: space-between;
+
+}
+
+.login-container {
+    top: 10%;
+    bottom: 10%;
+    left: 5%;
+    right: 5%;
+    padding: 80px;  
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    position: absolute;
+    backdrop-filter: blur(10px);
+
+}
+.text-container {
+    height: 85%;
+}
+
+p {
+    margin-top: 3%;
+    color: rgba(120, 57, 36, 1);
+    font-weight: 700;
+    font-size: 15px;
+}
+.text {
+    font-size: 15px;
+    font-weight: 500;
+}
