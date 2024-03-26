@@ -13,50 +13,43 @@
             <img class="our" src="/static/Logo.svg">
             {% if user %}
                 {% if is_student %}
-                    <button class="profile-button" onclick=redirectToProfileStudent()><img style="height: 10px" src="\static\profile.svg">          {{ user['name'] }}</button>
+                    <button class="profile-button" onclick=redirectToProfileStudent()>{{ user['name'] }}</button>
                 {% else %}
-                    <button class="profile-button" onclick=redirectToProfileEmployer()><img style="height: 10px" src="\static\profile.svg">          {{ user['name'] }}</button>
+                    <button class="profile-button" onclick=redirectToProfileEmployer()>{{ user['name'] }}</button>
                 {% endif %}
             {% else %}
-                <button class="profile-button" onclick=redirectToLogin()><img style="height: 10px" src="\static\login.svg">          Log in</button>
+                <button class="profile-button" onclick=redirectToLogin()>Profile</button>
             {% endif %}
         </div>
         <div class="text-container">
             <p>Description</p>
-            <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Volutpat est velit egestas dui id. Sed euismod nisi porta lorem mollis aliquam ut porttitor. Ultrices in iaculis nunc sed augueLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-
-
-                Volutpat est velit egestas dui id. Sed euismod nisi porta lorem mollis aliquam ut porttitor. Ultrices in iaculis nunc sed augue... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Volutpat est velit egestas dui id. Sed euismod nisi porta lorem mollis aliquam ut porttitor. Ultrices in iaculis nunc sed augue... 
-                
-                
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Volutpat est velit egestas dui id. Sed euismod nisi porta lorem mollis aliquam ut porttitor. Ultrices in iaculis nunc sed augue... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Volutpat est velit egestas dui id. Sed euismod nisi porta lorem mollis aliquam ut porttitor. Ultrices in iaculis nunc sed augue... 
-                Sed euismod nisi porta lorem mollis aliquam ut porttitor. Ultrices in iaculis nunc sed augue... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Volutpat est velit egestas dui id. Sed euismod nisi porta lorem mollis aliquam ut porttitor. Ultrices in iaculis nunc sed augue... </p>
+            <p class="text">{{ user_data }}</p>
         </div>
         <div class="signout-container">
             <div class="buttons">
                 {% if user %}
                     {% if not is_student %}
-                        <button class="main-button" onclick=redirectToStudents()><img style="height: 10px" src="\static\student.svg">          Students</button>
+                        <button class="main-button" onclick=redirectToStudents()>Students</button>
                     {% else %}
-                        <button class="main-button" onclick=redirectToStudentsError()><img style="height: 10px" src="\static\student.svg">          Students</button>
+                        <button class="main-button" onclick=redirectToStudentsError()>Students</button>
                     {% endif %}
                 {% else %}
-                <button class="main-button" onclick=redirectToError()><img style="height: 10px" src="\static\student.svg">          Students</button>
+                <button class="main-button" onclick=redirectToError()>Students</button>
                 {% endif %}
 
                 {% if user %}
                     {% if is_student %}
-                    <button class="main-button" onclick=redirectToVacancies()><img style="height: 10px"src="\static\job.svg">          Vacancies</button>
+                    <button class="main-button" onclick=redirectToVacancies()>Vacancies</button>
                     {% else %}
-                        <button class="main-button" onclick=redirectToVacanciesError()><img style="height: 10px"src="\static\job.svg">          Vacancies</button>
+                        <button class="main-button" onclick=redirectToVacanciesError()>Vacancies</button>
                     {% endif %}
                 {% else %}
-                <button class="main-button" onclick=redirectToError()><img style="height: 10px"src="\static\job.svg">          Vacancies</button>
+                <button class="main-button" onclick=redirectToError()>Vacancies</button>
                 {% endif %}
 
             </div>
                 {% if user %}
-                    <button class="signout-button" onclick=redirectToSignOut()><img style="height: 10px"src="\static\sign_out.svg">          Sign out</button>
+                    <button class="signout-button" onclick=redirectToSignOut()>Sign out</button>
                 {% endif %}
         </div>
     </div>
