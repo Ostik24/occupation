@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='sign_up_em.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='cs_for_pp.css') }}">
+    <title>Sign up</title>
+</head>
+<body>
+    <div class="logo"></div>
+    <img class="backImage" src="/static/uku_logo___seal_engl 1.svg" />
+    <div class="login-container">
+        <div class="top-container">
+            <div style="display:flex; align-items: flex-start;">
+                <button class="back-button" onclick=toMainPage()><img src="/static/arrow-left-o.svg"></button>
+            </div>
+            <div class="our-logo">
+                <img class="our" src="/static/Logo.svg">
+                <div class="flex">
+                    <a href="as_student.html" style="font-size: 15px;">as a student</a>
+                    <span> / </span>
+                    <a href="as_employer.html" style="font-size: 15px;">as an employer</a>
+                </div>
+            </div>
+        </div>
+        <h2 style="font-size: 30px;">Register</h2>
+        <form action="/submit_employer" method="POST" enctype="multipart/form-data">
+            <div class="for-pp">
+                <div class="input-group1">
+                    {% if null_error %}
+                    <p class="error" style="font-size: 15px; color: rgb(215, 45, 45);">{{ null_error }}</p>
+                    {% endif %}
+                    <span>Name</span>
+                    <input type="text" name="name" placeholder="Name" value="{{ session['name'] }}" maxlength="25">
+                    <span>Surname</span>
+                    <input type="text" name="surname" placeholder="Surname" value="{{ session['surname'] }}" maxlength="25">
+                    <span>Email</span>
+                    {% if email_error %}
+                    <p class="error" style="font-size: 11px; color: rgb(215, 45, 45);">{{ email_error }}</p>
+                    {% endif %}
+                    <input type="email" name="email" placeholder="username@gmail.com" value="{{ session['email'] }}">
+                </div>
+                <div class="profile-pic">
+                    <label class="-label" for="file">
+                      <span class="glyphicon glyphicon-camera"></span>
+                      <span>Change Image</span>
+                    </label>
+                    <input id="file" type="file" name = "image" onchange="loadFile(event)" accept="image/*"/>
+                    <img src="/static/Photo.svg" id="output" width="200" />
+                </div>
+            </div>
+            <div class="input-group2" :last-child>
+                <div class="fields">
+                <span>Password</span>
+                {% if regex_password_error %}
+                <div class="regex-password">
+                    <p class="error" style="font-size: 11px; color: rgb(215, 45, 45);">{{ regex_password_error[0] }}</p>
+                    <p class="error" style="font-size: 11px; color: rgb(215, 45, 45);">{{ regex_password_error[1] }}</p>
+                </div>
+                {% endif %}
+                <input class="text" type="password" id="password" name="password" placeholder="Password" onchange="validatePassword()">
+                </div>
+                <div class="fields">
+                <span>Company Name</span>
+                <input class="text" name="company_name" placeholder="Company name" value="{{ session['company_name'] }}">
+                </div>
+            </div>
+            {% if sent %}
+            <span>Verification</span>
+            <input class="text" name="verification" placeholder="Verification code">
+            {% endif %}
+            <div class="button-container">
+                <button class="submit-button" type="submit">Sign up</button>
+            </div>
+            <div class="login">
+                <span>Already have an account </span><a href="/login.html">login here</a>
+            </div>
+        </form>
+    </div>
+</body>
+<script src="/static/script_for_pp.js"></script>
+</html>

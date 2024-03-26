@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main_page_employer.css') }}">
+    <title>Main page</title>
+</head>
+<body>
+    <img class="backImage" src="/static/uku_logo___seal_engl 1.svg" />
+    <div class="search-container">
+        <img class="logo-home" src="/static/logo.svg" alt="Логотип" onclick="toIndex()">
+        <input type="text" class="search-input" placeholder="Search" id="searchInput">
+        <a href="profile_employer.html"><button class="profile-button">Profile</button></a>
+    </div>
+    <div class="vacancies">
+        {% for student in students %}
+        <div class="one-vacancy">
+            <div class="vacancy" id="vacancy{{ loop.index }}">
+                <p style="font-size: 25px; font-weight: bold; margin: 0;" id="search-field">{{ student["name"] }}</p>
+                <p style="font-size: 15px; margin-top: 0;" id="search-field">{{ student["surname"] }}</p>
+                <!-- <p>Contact information</p>
+                <span>{{ student["email"] }}</span> -->
+                {% if student['skills'] %}
+                <p>Skills</p>
+                <span id="search-field">{{ student["skills"] }}</span>
+                {% endif %}
+                {% if student['english'] %}
+                <p>English level</p>
+                <span id="search-field">{{ student["english"] }}</span>
+                {% endif %}
+                <button class="more-button" onclick="showMoreInfo('vacancy{{ loop.index }}', 'vacancy{{ loop.index }}-detailed')">More info</button>
+            </div>
+            <div class="vacancy-detailed" id="vacancy{{ loop.index }}-detailed">
+                <p style="font-size: 25px; font-weight: bold; margin: 0;">{{ student["name"] }}</p>
+                <p style="font-size: 15px; margin-top: 0;">{{ student["surname"] }}</p>
+                <p>Contact information</p>
+                <span>{{ student["email"] }}</span>
+                {% if student['phone'] %}
+                <span>{{ student["phone"] }}</span>
+                {% endif %}
+                <p>Description</p>
+                <div class="scrollable-field">
+                    <p>{{ student["description"] }}</p>
+                </div>
+                <button class="more-button" onclick="showLessInfo('vacancy{{ loop.index }}', 'vacancy{{ loop.index }}-detailed')">Back</button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <script src="/static/vacancy.js"></script>
+</body>
+</html>

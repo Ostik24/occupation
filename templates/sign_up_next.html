@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='sign_up_next.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Sign up</title>
+</head>
+<body>
+    <img class="backImage" src="/static/uku_logo___seal_engl 1.svg" />
+    <div class="logo"></div>
+    <div class="login-container">
+        <div class="our-logo">
+            <img class="our" src="/static/Logo.svg">
+        </div>
+        <h2 style="font-size: 30px;">Register</h2>
+        <p class="additional">additional information</p>
+        <form class="container" action="/submit_student2" method="POST">
+            <section>
+                <p class="experience">Experience in IT</p> 
+                <div class="slideThree"> 
+                    <input type="checkbox" value="Experience in IT" id="slideThree" name="experience_it" checked />
+                    <label for="slideThree"></label>
+                </div>
+                <p class="experience">Academic degree</p>
+                <div class="choice">
+                    <input type="radio" id="a" name="academic_degree" value="Bachelor"><label for="a">Bachelor</label>
+                    <input type="radio" id="b" name="academic_degree" value="Master" checked><label for="b">Master</label>
+                    <input type="radio" id="c" name="academic_degree" value="Unfinished Bachelor"><label for="c">Unfinished Bachelor</label>
+                </div>
+            </section>
+            <p class="lower-text">For faster employment, 
+                continue filling out your profile in your personal account</p>
+                    <div class="button-container">
+                        <button type="submit" action="/main_page">Sign up</button>
+                    </div>
+        </form>
+    </div>
+</body>
+<script src="/static/script_for_pp.js"></script>
+</html>
+

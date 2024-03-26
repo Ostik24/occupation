@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check-email</title>
+    <link rel="stylesheet" type="text/css" href="/static/check-email.css">
+</head>
+<body>
+    <img class="backImage" src="/static/uku_logo___seal_engl 1.svg" />
+    <div class="login-container">
+        {% if types == "employer" %}
+        <button class="back-button" onclick=toBackEmployer()><img src="/static/arrow-left-o.svg"></button>
+        {% elif types == "student" %}
+        <button class="back-button" onclick=toBackStudent()><img src="/static/arrow-left-o.svg"></button>
+        {% endif %}
+        <div class="logo-container">
+            <img class="our" src="/static/Logo.svg">
+        </div>
+        <h2 style="font-size: 30px;">Email Verification Code</h2>
+        <h6 style="color: rgba(197, 98, 65, 1)">Verifivation code was sent to your email adress</h6>
+        {% if invalid_code_error %}
+        <p class="error" style="font-size: 15px; color: rgb(215, 45, 45);">{{ invalid_code_error }}</p>
+        {% endif %}
+        <form action="/verify" method="POST">
+            {% if types == "employer" %}
+            <input type="hidden" name="types" value="employer">
+            {% elif types == "student" %}
+            <input type="hidden" name="types" value="student">
+            {% elif types == "reset" %}
+            <input type="hidden" name="types" value="reset">
+            {% endif %}
+            <p class="verification">Verification code</p>
+            <input type="code" name="code" placeholder="Code">
+            <button class="submit-button" type="submit">Continue</button>
+        </form>
+    </div>
+</body>
+<script>
+    function toBackEmployer() {
+        window.location.href = "/sign_up_em.html"
+    }
+
+    function toBackStudent() {
+        window.location.href = "/sign_up_student.html"
+    }
+</script>
+</html>

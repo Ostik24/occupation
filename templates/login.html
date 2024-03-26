@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="/static/login.css">
+</head>
+<body>
+    <img class="backImage" src="/static/uku_logo___seal_engl 1.svg" />
+    <div class="login-container">
+        <button class="back-button" onclick=toMainPage()><img src="/static/arrow-left-o.svg"></button>
+        <div class="logo-container">
+            <img class="our" src="/static/Logo.svg">
+        </div>
+        <h2 style="font-size: 30px;">Login</h2>
+        <form action="/login" method="POST">
+            {% if invalid_error %}
+            <p class="error" style="font-size: 15px; color: rgb(215, 45, 45);">{{ invalid_error }}</p>
+            {% elif incorrect_error %}
+            <p class="error" style="font-size: 15px; color: rgb(215, 45, 45);">{{ incorrect_error }}</p>
+            {% endif %}
+            <span>Email</span>
+            <input type="email" name="email" placeholder="username@gmail.com" value="{{ mail }}">
+            <span>Password</span>
+            <input type="password" name="password" placeholder="Password">
+            <span>Don't remember your password? </span><a href="reset-password"> reset it</a>
+            <button class="submit-button" type="submit">Sign in</button>
+            <div class="register">
+                <span>Don't have an account? </span><a href="as_student.html"> register for free</a>
+            </div>
+        </form>
+    </div>
+</body>
+<script>
+    function toMainPage() {
+        window.location.href = "/"
+    }
+</script>
+</html>
