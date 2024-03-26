@@ -9,7 +9,7 @@
 <body>
     <img class="backImage" src="/static/uku_logo___seal_engl 1.svg" />
     <div class="search-container">
-        <img src="/static/logo.svg" alt="Логотип" onclick=to_index()>
+        <img class="logo-home" src="/static/logo.svg" alt="Логотип" onclick=to_index()>
         <input type="text" class="search-input" placeholder="Search">
         <button class="profile-button" onclick=to_index()>Main page</button>
     </div>
@@ -22,7 +22,7 @@
                 <p>Age: <span style="font-weight: 590; color: rgb(128, 58, 21);">{{ user_data['age'] }}</span></p>
                 <p>Phone number: <span style="font-weight: 590; color: rgb(128, 58, 21);">{{ user_data['phone'] if 'phone' in user_data else ''}}</span></p>
                 <p>Email address: <span style="font-weight: 590; color: rgb(128, 58, 21);">{{ user_data['email'] }}</span></p>
-                <button class="edit-button" onclick="editButton('personal')">Edit</button>
+                <button class="edit-button" onclick="editButton('personal')"><img style="height: 10px" src="\static\edit.svg">          Edit</button>
             </div>
             <div class="photo-container">
                 {% if user_data['profile_image'] %}
@@ -35,29 +35,29 @@
         <div class="info-container" id="personal-edit-container" style="display: none;">
             <div class="text-container" id="personal-form-container">
                 <h2>Edit Personal and contact information</h2>
-                <form class="text-container" id="personal-form" action="/update_profile_personal" method="post">
+                <form class="text-container" id="personal-form" action="/update_profile_personal" method="post" enctype="multipart/form-data">
                     <p>Name:</p>
-                    <input type="text" name="name" id="edit-name" value="{{ user_data['name'] }}" placeholder="Enter name">
+                    <input type="text" name="name" id="edit-name" value="{{ user_data['name'] }}" placeholder="Enter name" required>
                     <p>Surname:</p>
-                    <input type="text" name="surname" id="edit-surname" value="{{ user_data['surname'] }}" placeholder="Enter surname">
+                    <input type="text" name="surname" id="edit-surname" value="{{ user_data['surname'] }}" placeholder="Enter surname" required>
                     <p>Age:</p>
-                    <input type="text" name="age" id="edit-age" value="{{ user_data['age'] }}" placeholder="Enter age">
+                    <input type="number" name="age" id="edit-age" value="{{ user_data['age'] }}" placeholder="Enter age" onchange="validateAge()" required>
                     <p>Phone number: </p>
-                    <input type="text" name="phone-number" id="edit-phone" value="{{ user_data['phone'] if 'phone' in user_data else ''}}" placeholder="Enter your phone number">
+                    <input type="text" name="phone-number" id="edit-phone" value="{{ user_data['phone'] if 'phone' in user_data else ''}}" onchange="validatePhoneNumber()" placeholder="Enter your phone number">
                     <p>Email address: <span style="font-weight: 590; color: rgb(128, 58, 21);">{{ user_data['email'] }}</span></p>
                     <!-- <p>Email address:</p>
                     <input type="text" name="email" id="edit-email" value="{{ user_data['email'] }}" placeholder="Enter age"> -->
-                    <button class="save-button" type="submit">Save</button>
+                    <button class="save-button" type="submit"><img style="height: 10px"src="\static\save.svg">          Save</button>
                     <button type="button" class="out-button" style="width:100%" onclick="goBackInfo('personal')"><img style="height: 10px"src="\static\back.svg">          Back</button>
                 </form>
             </div>
             <div>
                 <div class="profile-pic">
                     <label class="-label" for="file">
-                    <span class="glyphicon glyphicon-camera"></span>
-                    <span>Change Image</span>
+                      <span class="glyphicon glyphicon-camera"></span>
+                      <span>Change Image</span>
                     </label>
-                    <input id="file" type="file" onchange="loadFile(event)" accept="image/*" />
+                    <input id="file" type="file" name="image" onchange="loadFile(event)" accept="image/*" />
                     <img src="/static/Photo.svg" id="output" width="200" />
                 </div>
             </div>
@@ -70,7 +70,7 @@
                 <p>Working experience: <span style="font-weight: 590; color: rgb(128, 58, 21);">{{ user_data['experience_it'] }}</span></p>
                 <p>English level: <span style="font-weight: 590; color: rgb(128, 58, 21);">{{ user_data['english'] if 'english' in user_data else ''}}</span></p>
                 <p>Description: <span style="font-weight: 590; color: rgb(128, 58, 21);">{{ user_data['description'] if 'description' in user_data else ''}}</span></p></p>
-                <button class="edit-button" style="width: 25%" onclick="editButton('skills')">Edit</button>
+                <button class="edit-button" style="width: 25%" onclick="editButton('skills')"><img style="height: 10px" src="\static\edit.svg">          Edit</button>
             </div>
         </div>
         <div class="info-container" id="skills-edit-container" style="display: none;">
@@ -81,7 +81,7 @@
                     <select name="degree" id="edit-education">
                         <option value="Bachelor" {% if 'Bachelor' == user_data['academic_degree'] %} selected {% endif %}>Bachelor</option>
                         <option value="Master" {% if 'Master' == user_data['academic_degree'] %} selected {% endif %}>Master</option>
-                        <option value="Incomplete Bachelor" {% if 'Unfinished Bachelor' == user_data['academic_degree'] %} selected {% endif %}>Unfinished Bachelor</option>
+                        <option value="Unfinished Bachelor" {% if 'Unfinished Bachelor' == user_data['academic_degree'] %} selected {% endif %}>Unfinished Bachelor</option>
                     </select>
                     <p>Skills: </p>
                     <input type="text" name="skills" id="edit-skills" value="{{ user_data['skills'] if 'skills' in user_data else ''}}" placeholder="Enter your skills">
@@ -93,73 +93,31 @@
                         <option value="no" {% if 'no' == user_data['experience_it'] %} selected {% endif %}>no</option>
                     </select>
                     <p>English level: </p>
-                    <input type="text" name="english" id="edit-english" value="{{ user_data['english'] if 'english' in user_data else ''}}" placeholder="Enter your English level">
+                    <input type="text" name="english" id="edit-english" value="{{ user_data['english'] if 'english' in user_data else ''}}" placeholder="Enter your English level" onchange="validateEnglishLevel()">
                     <p>Description: </p>
                     <div class="description-container">
                         <textarea name="description" id="description-text" oninput="autoResize(this)">{{ user_data['description'] if 'description' in user_data else '' }}</textarea>
                         <!-- <div id="scroll-div"></div> -->
                     </div>
                     <!-- <input type="text" name="description" id="edit-description" value="{{ user_data['description'] if 'description' in user_data else ''}}" placeholder="Enter more detailed information about you"> -->
-                    <button class="save-button" style="width:50%;" type="submit">Save</button>
+                    <button class="save-button" style="width:50%;" type="submit"><img style="height: 10px"src="\static\save.svg">          Save</button>
                     <button type="button" class="out-button" onclick="goBackInfo('skills')"><img style="height: 10px"src="\static\back.svg">          Back</button>
                 </form>
             </div>
         </div>
         <div class="edit-account">
-            <button class="sign-out-button" onclick="signOut()">Sign out</button>
-            <button class="deleate-button" onclick="deleter()">Delete account</button>
+            <button class="sign-out-button" onclick="signOut()"><img style="height: 10px"src="\static\sign_out.svg">          Sign out</button>
+            <button class="deleate-button" onclick="openModal()"><img style="height: 10px"src="\static\exit.svg">          Delete account</button>
+            <!-- The Modal -->
+        </div>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <p>Do you really want to delete your account?</p>
+                <button class="out-button-for-delete" onclick="closeModal()">No</button>
+                <button class="deleate-button" onclick="deleter()">Yes</button>
+            </div>
         </div>
     </div>
 </body>
-<script>
-    function signOut() {
-        // Redirect to the sign-out route
-        window.location.href = "/sign_out";
-    }
-
-    function deleter() {
-        // Redirect to the sign-out route
-        window.location.href = "/delete_account";
-    }
-
-    function to_index() {
-        // Redirect to the sign-out route
-        window.location.href = "/";
-    }
-
-    function editButton(section) {
-        var textContainer = document.getElementById(section + "-info-container");
-        var formContainer = document.getElementById(section + "-edit-container");
-
-        textContainer.style.display = "none";
-        formContainer.style.display = "block";
-    }
-    var loadFile = function (event) {
-    var image = document.getElementById("output");
-    image.src = URL.createObjectURL(event.target.files[0]);
-    };
-
-    document.getElementById('file').addEventListener('change', function () {
-        var file = this.files[0];
-        var reader = new FileReader();
-        reader.onloadend = function () {
-            document.getElementById('encoded_photo').value = reader.result;
-        };
-        reader.readAsDataURL(file);
-    });
-    
-    function autoResize(element) {
-        element.style.height = "auto";
-        element.style.height = (element.scrollHeight) + "px";
-    }
-
-    function goBackInfo(section) {
-    var textContainer = document.getElementById(section + "-info-container");
-    var formContainer = document.getElementById(section + "-edit-container");
-
-    textContainer.style.display = "flex";
-    formContainer.style.display = "none";
-}
-
-</script>
+<script src="/static/profile_student.js"></script>
 </html>

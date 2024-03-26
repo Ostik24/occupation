@@ -12,7 +12,7 @@
     <div class="login-container">
         <div class="top-container">
             <div style="display:flex; align-items: flex-start;">
-                <button class="back-button" onclick=toMainPage()><img src="/static/arrow-left-o.png"></button>
+                <button class="back-button" onclick=toMainPage()><img src="/static/arrow-left-o.svg"></button>
             </div>
             <div class="our-logo">
                 <img class="our" src="/static/Logo.svg">
@@ -55,6 +55,12 @@
             <div class="input-group2">
                 <div class="fields">
                 <span>Password</span>
+                {% if regex_password_error %}
+                <div class="regex-password">
+                    <p class="error" style="font-size: 11px; color: rgb(215, 45, 45);">{{ regex_password_error[0] }}</p>
+                    <p class="error" style="font-size: 11px; color: rgb(215, 45, 45);">{{ regex_password_error[1] }}</p>
+                </div>
+                {% endif %}
                 <input class="text" name="password" type="password" placeholder="Password">
                 </div>
                 <div class="fields">
@@ -78,3 +84,4 @@
 </body>
 <script src="/static/script_for_pp.js"></script>
 </html>
+

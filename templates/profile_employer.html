@@ -9,7 +9,7 @@
 <body>
     <img class="backImage" src='/static/uku_logo___seal_engl 1.svg' />
     <div class="search-container">
-        <img src="/static/Logo.svg" onclick=to_index() alt="Логотип">
+        <img class="logo-home" src="/static/Logo.svg" onclick=to_index() alt="Логотип">
         <input type="text" class="search-input" placeholder="Search">
         <button class="profile-button" onclick=to_index()>Main page</button>
     </div>
@@ -37,15 +37,15 @@
         <div class="info-container" id="personal-edit-container" style="display: none;">
             <div class="text-container" id="personal-form-container">
                 <h2>Edit Personal and contact information</h2>
-                <form class="text-container" id="personal-form" action="/update_profile_employer" method="post">
+                <form class="text-container" id="personal-form" action="/update_profile_employer" method="post" enctype="multipart/form-data">
                     <p>Name:</p>
-                    <input type="text" name="name" id="edit-name" value="{{ user_data['name'] }}" placeholder="Enter name">
+                    <input type="text" name="name" id="edit-name" value="{{ user_data['name'] }}" placeholder="Enter name" maxlength="25">
                     <p>Surname:</p>
-                    <input type="text" name="surname" id="edit-surname" value="{{ user_data['surname'] }}" placeholder="Enter surname">
+                    <input type="text" name="surname" id="edit-surname" value="{{ user_data['surname'] }}" placeholder="Enter surname" maxlength="25">
                     <p>Company name:</p>
                     <input type="text" name="company-name" id="edit-company-name" value="{{ user_data['company_name'] }}" placeholder="Enter company name">
                     <p>Phone number: </p>
-                    <input type="text" name="phone-number" id="edit-phone" value="{{ user_data['phone'] if 'phone' in user_data else ''}}" placeholder="Enter your phone number">
+                    <input type="text" name="phone-number" id="edit-phone" value="{{ user_data['phone'] if 'phone' in user_data else ''}}" placeholder="Enter your phone number" onchange="validatePhoneNumber()">
                     <p>Email address: <span style="font-weight: 590; color: rgb(128, 58, 21);">{{ user_data['email'] }}</span></p>
                     <!-- <p>Email address:</p>
                     <input type="text" name="email" id="edit-email" value="{{ user_data['email'] }}" placeholder="Enter age"> -->
@@ -59,19 +59,11 @@
                     <span class="glyphicon glyphicon-camera"></span>
                     <span>Change Image</span>
                     </label>
-                    <input id="file" type="file" onchange="loadFile(event)" accept="image/*" />
+                    <input id="file" type="file" name = "image" onchange="loadFile(event)" accept="image/*" />
                     <img src="/static/Photo.svg" id="output" width="200" />
                 </div>
             </div>
         </div>
-        <!-- <div class="info-container">
-            <div class="text-container">
-                <h2>Contact information</h2>
-                <p>Email address: <span class="new_span" style="font-weight: 590; color: rgb(128, 58, 21);">{{ user_data['email'] }}</span></p>
-                <p>Phone number: </p>
-                <button class="edit-button">Edit</button>
-            </div>
-        </div> -->
         <div class="edit-account">
             <button class="out-button" onclick="signOut()"><img style="height: 10px"src="\static\sign_out.svg">          Sign out</button>
             <!-- <button class="delete-button" onclick="deleter()"><img style="height: 10px"src="\static\exit.svg">          Delete account</button> -->
@@ -79,11 +71,10 @@
             <!-- The Modal -->
         </div>
         <div id="myModal" class="modal">
-            <!-- Modal content -->
             <div class="modal-content">
-                <p>Do you really wish to delete your account?</p>
-                <button class="out-button" onclick="closeModal()">No!</button>
-                <button class="delete-button" onclick="deleter()">Yes, delete!</button>
+                <p>Do you really want to delete your account?</p>
+                <button class="out-button" onclick="closeModal()">No</button>
+                <button class="delete-button" onclick="deleter()">Yes</button>
             </div>
         </div>
         <h2 class="job-offers" style="margin-top: 1%;">My job offers</h2>
@@ -106,7 +97,7 @@
             </div>
         </div>
         {% for vacancy in vacancies.find({'email':user_data["email"]}) %}
-        <div class="info-container">
+        <!-- <div class="info-container">
             <div class="vacancy">
                 <h2>{{ vacancy['job_name'] }}</h2>
                 <p style="color: rgba(196, 97, 64, 1);">Skills</p>
@@ -116,10 +107,39 @@
                 <p style="color: rgba(196, 97, 64, 1);">Description</p>
                 <span>{{ vacancy['description'] }}</span>
                 <div style="display: flex; flex-direction: row; justify-content: space-between;">
-                    <button class="edit-button" style="width: 25%"><img style="height: 10px"src="\static\edit.svg">          Edit</button>
-                    <button class="delete-button"><img style="height: 10px"src="\static\delete_vacancy.svg">          Delete</button>
+                    <button class="edit-button" style="width: 25%" onclick="editVacancy()" ><img style="height: 10px"src="\static\edit.svg">          Edit</button>
+                    <button class="delete-button" ><img style="height: 10px" src="\static\delete_vacancy.svg">          Delete</button>
                 </div>
             </div>
+        </div>                                Цей код був раніше, якщо що-->
+        <div class="info-container" id="vacancy{{ loop.index }}">
+            <div class="vacancy">
+                <h2>{{ vacancy['job_name'] }}</h2>
+                <p style="color: rgba(196, 97, 64, 1);">Skills</p>
+                <span>{{ vacancy['skills'] }}</span>
+                <p style="color: rgba(196, 97, 64, 1);">Employment options</p>
+                <span>{{ vacancy['employment'] }}</span>
+                <p style="color: rgba(196, 97, 64, 1);">Description</p>
+                <span>{{ vacancy['description'] }}</span>
+                <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                    <button class="edit-button" style="width: 25%" onclick="editVacancy('vacancy{{ loop.index }}')"><img style="height: 10px"src="\static\edit.svg">          Edit</button>
+                    <button class="delete-button" onclick="vacancyDeleter('{{ vacancy._id }}')"><img style="height: 10px"src="\static\delete_vacancy.svg">          Delete</button>
+                </div>
+            </div>
+        </div>
+        <div class="info-container" style="display: none;" id="edit-vacancy{{ loop.index }}">
+            <form class="form-vacancy" method="POST" action="/edit_job_offer?id={{ vacancy['_id'] }}">
+                <p style="color: rgba(196, 97, 64, 1);">Job name</p>
+                <input type="text" id="jobName" name="jobName" placeholder="Job name" value="{{ vacancy['job_name'] }}"><br>
+                <p style="color: rgba(196, 97, 64, 1);">Skills</p>
+                <input type="text" id="skills" name="skills" value="{{ vacancy['skills'] }}" placeholder="Skills"><br>
+                <p style="color: rgba(196, 97, 64, 1);">Employment options</p>
+                <input type="text" id="employment" name="employment" value="{{ vacancy['employment'] }}" placeholder="Employment options"><br>
+                <p style="color: rgba(196, 97, 64, 1);">Description</p>
+                <textarea type="text" id="description" name="description" placeholder="Description">{{ vacancy['description'] }}</textarea><br>
+                <button class="save-button" type="submit"><img style="height: 10px"src="\static\save.svg">          Save</button>
+                <button type="button" class="out-button" style="width:100%" onclick="goBackVacancy('vacancy{{ loop.index }}', 'edit-vacancy{{ loop.index }}')"><img style="height: 10px"src="\static\back.svg">          Back</button>
+            </form> 
         </div>
         {% endfor %}
     </div>
