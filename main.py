@@ -46,6 +46,8 @@ service = build('drive', 'v3', credentials=CREDS)
 @app.route('/')
 def index():
     user_data = session.get('user_data')
+    if user_data:
+        user_data=collection.find_one({'email': user_data['email']})
     is_student = False
     if user_data and user_data['type'] == 'student':
         is_student = True
@@ -82,6 +84,8 @@ def reset():
             return render_template('check-email.html', types=session['types'])
         existing_email_error = "The email is not found or passwords do not match."
         return render_template('reset-password.html', existing_email_error=existing_email_error)
+    if request.method == 'GET':
+        return render_template('reset-password.html')
 
 @app.route('/verify', methods=['GET', 'POST'])
 def verify():

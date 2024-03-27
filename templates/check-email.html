@@ -9,10 +9,12 @@
 <body>
     <img class="backImage" src="/static/uku_logo___seal_engl 1.svg" />
     <div class="login-container">
-        {% if session['types'] == "employer" %}
+        {% if types == "employer" %}
         <button class="back-button" onclick=toBackEmployer()><img src="/static/arrow-left-o.svg"></button>
-        {% elif session['types'] == "student" %}
+        {% elif types == "student" %}
         <button class="back-button" onclick=toBackStudent()><img src="/static/arrow-left-o.svg"></button>
+        {% elif types == "reset" %}
+        <button class="back-button" onclick=toBackReset()><img src="/static/arrow-left-o.svg"></button>
         {% endif %}
         <div class="logo-container">
             <img class="our" src="/static/Logo.svg">
@@ -37,7 +39,9 @@
     </div>
 </body>
 <script>
-
+    function toBackReset() {
+        window.location.href = "/reset-password"
+    }
 
     function toBackEmployer() {
         window.location.href = "/sign_up_em.html"
