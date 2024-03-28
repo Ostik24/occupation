@@ -43,13 +43,20 @@ function validatePhoneNumber() {
     var phoneNumberInput = document.getElementById('edit-phone').value;
     var regex = /^\+380\d{9}$/;
 
-    if (!regex.test(phoneNumberInput)) {
-        alert('Please enter a valid phone number in the format +380XXXXXXXXX.');
-        return false;
-        // document.getElementById('edit-phone').value = ''; // Clear the input field
+    if (phoneNumberInput.trim() === '') {
+        // Input is empty, so it's okay
+        return true;
+    } else {
+        // Input is not empty, validate against regex
+        if (!regex.test(phoneNumberInput)) {
+            alert('Please enter a valid phone number in the format +380XXXXXXXXX.');
+            return false;
+            // document.getElementById('edit-phone').value = ''; // Clear the input field
+        }
+        return true;
     }
-    return true;
 }
+
 function vacancyDeleter(vacancyId) {
     if (confirm('Are you sure you want to delete this vacancy?')) {
         window.location.href = "/delete_vacancy?vacancy_id=" + vacancyId;
