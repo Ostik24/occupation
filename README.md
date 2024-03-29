@@ -13,15 +13,6 @@ Our project is for UCU students who whant to find job and for employers who want
 - [@hhafiya](https://github.com/hhafiya)
 
 
-## Deployment
-
-To deploy this project run
-
-```bash
-main.py
-```
-
-
 
 
 ## Start
