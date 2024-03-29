@@ -14,22 +14,7 @@ body {
     margin: 50px auto;
 }
 
-/* Стилі для кнопки профілю */
 .profile-button {
-    padding: 8px 16px;
-    background-color: rgba(151, 71, 45, 1); /* Колір кнопки */
-    color: #fff; /* Колір тексту */
-    border: none;
-    border-radius: 20px; /* Закруглені кути */
-    cursor: pointer;
-    transition: background-color 0.3s ease; /* Плавне змінення кольору при наведенні */
-    /* position: absolute; */
-    font-weight: bolder;
-    /* z-index: 2; */
-    width: 10%;
-    height: 80%
-}
-/* .students-button {
     padding: 8px 16px;
     background-color: rgba(151, 71, 45, 1);
     color: #fff;
@@ -39,40 +24,31 @@ body {
     transition: background-color 0.3s ease;
     font-weight: bolder;
     width: 10%;
-} */
+    height: 80%
+}
 
 .main-button {
     padding: 8px 16px;
-    background-color: rgba(151, 71, 45, 1); /* Колір кнопки */
-    color: #fff; /* Колір тексту */
+    background-color: rgba(151, 71, 45, 1);
+    color: #fff;
     border: none;
-    border-radius: 20px; /* Закруглені кути */
+    border-radius: 20px;
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Плавне змінення кольору при наведенні */
-    /* position: absolute; */
+    transition: background-color 0.3s ease;
     font-weight: bolder;
-    /* z-index: 2; */
     width: 12%;
-    /* margin-left: 29%;
-    margin-top: 0.8%; */
 }
 
 .signout-button {
     padding: 8px 16px;
-    background-color: rgba(242, 80, 25, 1); /* Колір кнопки */
-    color: #fff; /* Колір тексту */
+    background-color: rgba(242, 80, 25, 1);
+    color: #fff;
     border: none;
-    border-radius: 20px; /* Закруглені кути */
+    border-radius: 20px;
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Плавне змінення кольору при наведенні */
-    /* position: absolute; */
+    transition: background-color 0.3s ease;
     font-weight: bolder;
-    /* z-index: 2; */
     width: 12%;
-    /* margin-left: 29%;
-    margin-top: 0.8%; */
-    /* bottom: 10%; /* Adjust bottom position */
-    /* left: 84%; */ 
 }
 
 .signout-button:hover {
@@ -87,7 +63,6 @@ button:hover {
     flex-direction: row;
     justify-content: space-between;
     justify-self: end;
-    /* margin-top: 10%; */
 }
 
 .buttons {
@@ -121,8 +96,6 @@ h2 {
 }
 .top-container {
     display: flex;
-    /* align-items: center; */
-    /* justify-content: row; */
     justify-content: space-between;
 
 }

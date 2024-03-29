@@ -16,17 +16,17 @@
     img {
         position: absolute;
         object-fit: cover;
-        width: 145px; /* Adjusted to be smaller by 5px again */
-        height: 145px; /* Adjusted to be smaller by 5px again */
+        width: 145px;
+        height: 145px;
         box-shadow: 0 0 10px 0 rgba(255,255,255,.35);
-        border-radius: 72.5px; /* Adjusted for a smaller circular shape */
+        border-radius: 72.5px;
         z-index: 0;
     }
 
     .-label {
         cursor: pointer;
-        height: 145px; /* Adjusted to be smaller by 5px again */
-        width: 145px; /* Adjusted to be smaller by 5px again */
+        height: 145px;
+        width: 145px;
     }
 
     &:hover {
@@ -38,7 +38,7 @@
             z-index: 10000;
             color: rgb(250,250,250);
             transition: background-color .2s ease-in-out;
-            border-radius: 72.5px; /* Adjusted for a smaller circular shape */
+            border-radius: 72.5px;
             margin-bottom: 0;
         }
     }

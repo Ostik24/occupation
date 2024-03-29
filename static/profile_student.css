@@ -1,7 +1,6 @@
 body {
     font-family: 'Montserrat', sans-serif;
     background-color: rgba(255, 178, 126, 1);
-    /* padding: 20px; */
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 .backImage{
@@ -22,44 +21,40 @@ body {
     flex-direction: column;
 }
 
-/* Загальні стилі для контейнера */
 .search-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px;
-    background-color: rgba(255, 255, 255, 0.3); /* Білий фон */
+    background-color: rgba(255, 255, 255, 0.3);
     border-radius: 20px;
 
 }
 
-/* Стилі для логотипа */
 .search-container img {
-    width: 120px; /* Розмір логотипу */
+    width: 120px;
     height: auto;
 }
 
-/* Стилі для поля для пошуку */
 .search-input {
-    flex: 1; /* Поля для пошуку займає весь вільний простір */
+    flex: 1;
     padding: 8px;
-    border: 1px solid #ccc; /*  Рамка */
-    border-radius: 20px; /* Закруглені кути */
-    margin: 0 10px; /* Відступи від логотипу та кнопки */
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    margin: 0 10px;
     font-size: 16px;
-    outline: none; /* Зняття контуру при фокусі */
+    outline: none;
     background-color: rgba(255, 213, 184, 1);
 }
 
-/* Стилі для кнопки профілю */
 .profile-button {
     padding: 8px 16px;
-    background-color: rgba(151, 71, 45, 1); /* Колір кнопки */
-    color: #fff; /* Колір тексту */
+    background-color: rgba(151, 71, 45, 1);
+    color: #fff;
     border: none;
-    border-radius: 20px; /* Закруглені кути */
+    border-radius: 20px;
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Плавне змінення кольору при наведенні */
+    transition: background-color 0.3s ease;
     position: relative;
     font-weight: bolder;
     z-index: 2;
@@ -67,26 +62,26 @@ body {
 
 .edit-button {
     padding: 8px 50px;
-    background-color: rgba(151, 71, 45, 1); /* Колір кнопки */
-    color: #fff; /* Колір тексту */
+    background-color: rgba(151, 71, 45, 1);
+    color: #fff;
     border: none;
-    border-radius: 20px; /* Закруглені кути */
+    border-radius: 20px;
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Плавне змінення кольору при наведенні */
+    transition: background-color 0.3s ease;
     position: relative;
     font-weight: bolder;
     z-index: 2;
-    width: 50%;
+    width: 43%;
     margin-top: 10px;
 }
 .save-button {
     padding: 8px 50px;
-    background-color: rgba(242, 80, 25, 1); /* Колір кнопки */
-    color: #fff; /* Колір тексту */
+    background-color: rgba(242, 80, 25, 1);
+    color: #fff;
     border: none;
-    border-radius: 20px; /* Закруглені кути */
+    border-radius: 20px;
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Плавне змінення кольору при наведенні */
+    transition: background-color 0.3s ease;
     position: relative;
     font-weight: bolder;
     z-index: 2;
@@ -131,7 +126,6 @@ input {
     width: 100%;
     padding: 5px;
     margin-bottom: 5px;
-    /* margin-left: 500; */
     border-radius: 5px;
     border: 1px solid #ccc;
     box-sizing: border-box;
@@ -150,23 +144,14 @@ input {
     display: flex;
     justify-content: end;
     flex-direction: column;
-    /* background-color: aqua; */
 }
 
 .text-c {
     width: 100%;
     display: flex;
-    /* justify-content: end; */
     flex-direction: row;
     justify-content: space-between;
 }
-/* 
-.text-container2 {
-    width: 50%;
-    display: flex;
-    justify-content: end;
-    flex-direction: column;
-} */
 
 .photo-container {
     width: 50%;
@@ -174,20 +159,18 @@ input {
     align-items: center;
     justify-content: end;
     right: 0;
-    /* background-color: black; */
 }
 p {
     margin-top: 10px;
     margin-bottom: 0;
 }
 .sign-out-button {
-    /* padding: 8px 50px; */
-    background-color: rgba(151, 71, 45, 1); /* Колір кнопки */
-    color: #fff; /* Колір тексту */
+    background-color: rgba(151, 71, 45, 1);
+    color: #fff;
     border: none;
-    border-radius: 20px; /* Закруглені кути */
+    border-radius: 20px;
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Плавне змінення кольору при наведенні */
+    transition: background-color 0.3s ease;
     position: relative;
     font-weight: bolder;
     z-index: 2;
@@ -197,12 +180,12 @@ p {
 
 .out-button-for-delete {
     padding: 8px 50px;
-    background-color: rgba(151, 71, 45, 1); /* Колір кнопки */
-    color: #fff; /* Колір тексту */
+    background-color: rgba(151, 71, 45, 1);
+    color: #fff;
     border: none;
-    border-radius: 20px; /* Закруглені кути */
+    border-radius: 20px; 
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Плавне змінення кольору при наведенні */
+    transition: background-color 0.3s ease;
     position: relative;
     font-weight: bolder;
     z-index: 2;
@@ -216,12 +199,12 @@ p {
 
 .out-button {
     padding: 8px 50px;
-    background-color: rgba(151, 71, 45, 1); /* Колір кнопки */
-    color: #fff; /* Колір тексту */
+    background-color: rgba(151, 71, 45, 1);
+    color: #fff;
     border: none;
-    border-radius: 20px; /* Закруглені кути */
+    border-radius: 20px;
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Плавне змінення кольору при наведенні */
+    transition: background-color 0.3s ease;
     position: relative;
     font-weight: bolder;
     z-index: 2;
@@ -242,11 +225,11 @@ p {
     width: 25%; 
     background-color: rgba(242, 80, 25, 1); 
     margin-top: 10px; 
-    color: #fff; /* Колір тексту */ 
+    color: #fff;
     border: none; 
-    border-radius: 20px; /* Закруглені кути */ 
+    border-radius: 20px;
     cursor: pointer; 
-    transition: background-color 0.3s ease; /* Плавне змінення кольору при наведенні */ 
+    transition: background-color 0.3s ease;
     position: relative; 
     font-weight: bolder; 
     z-index: 2;
@@ -272,14 +255,10 @@ p {
     align-self: center;
     align-items: center;
     position: absolute;
-    /* right: 26%;
-    bottom: 2em; */
     width: 15%;
     border-radius: 50%;
-    /* background-color: blue; */
     transition: all .3s ease;
     left: 50%;
-    /* right: 0; */
 
     input {
         display: none;
@@ -288,17 +267,17 @@ p {
     img {
         position: absolute;
         object-fit: cover;
-        width: 115px; /* Adjusted to be smaller by 5px again */
-        height: 115px; /* Adjusted to be smaller by 5px again */
+        width: 115px;
+        height: 115px;
         box-shadow: 0 0 10px 0 rgba(255,255,255,.35);
-        border-radius: 60px; /* Adjusted for a smaller circular shape */
+        border-radius: 60px;
         z-index: 0;
     }
 
     .-label {
         cursor: pointer;
-        height: 115px; /* Adjusted to be smaller by 5px again */
-        width: 115px; /* Adjusted to be smaller by 5px again */
+        height: 115px;
+        width: 115px;
     }
 
     &:hover {
@@ -310,15 +289,13 @@ p {
             z-index: 10000;
             color: rgb(250,250,250);
             transition: background-color .2s ease-in-out;
-            border-radius: 72.5px; /* Adjusted for a smaller circular shape */
+            border-radius: 72.5px;
             margin-bottom: 0;
         }
     }
 
     span {
         display: inline-flex;
-        /* padding: .2em;
-        height: 2em; */
     }
 }
 
@@ -329,23 +306,21 @@ p {
 
 .description-text {
     width: 100%;
-    height: 100px; /* Початкова висота */
+    height: 100px;
     resize: none;
 }
 
-/* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 10001; /* Sit on top */
+    display: none;
+    position: fixed;
+    z-index: 10001;
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
+    width: 100%;
+    height: 100%;
+    overflow: auto;
 }
 
-/* Modal Content */
 .modal-content {
     background-color: rgb(250,250,250, 0.85);
     margin: 15% auto;

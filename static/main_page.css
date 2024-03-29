@@ -1,7 +1,6 @@
 body {
     font-family: 'Montserrat', sans-serif;
     background-color: rgba(255, 178, 126, 1);
-    /* padding: 20px; */
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 .backImage{
@@ -16,44 +15,40 @@ body {
     margin: 50px auto;
 }
 
-/* Загальні стилі для контейнера */
 .search-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px;
-    background-color: rgba(255, 255, 255, 0.3); /* Білий фон */
+    background-color: rgba(255, 255, 255, 0.3);
     border-radius: 20px;
 
 }
 
-/* Стилі для логотипа */
 .search-container img {
-    width: 120px; /* Розмір логотипу */
+    width: 120px;
     height: auto;
 }
 
-/* Стилі для поля для пошуку */
 .search-input {
-    flex: 1; /* Поля для пошуку займає весь вільний простір */
+    flex: 1;
     padding: 8px;
-    border: 1px solid #ccc; /*  Рамка */
-    border-radius: 20px; /* Закруглені кути */
-    margin: 0 10px; /* Відступи від логотипу та кнопки */
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    margin: 0 10px;
     font-size: 16px;
-    outline: none; /* Зняття контуру при фокусі */
+    outline: none;
     background-color: rgba(255, 213, 184, 1);
 }
 
-/* Стилі для кнопки профілю */
 .profile-button {
     padding: 8px 16px;
-    background-color: rgba(151, 71, 45, 1); /* Колір кнопки */
-    color: #fff; /* Колір тексту */
+    background-color: rgba(151, 71, 45, 1);
+    color: #fff;
     border: none;
-    border-radius: 20px; /* Закруглені кути */
+    border-radius: 20px;
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Плавне змінення кольору при наведенні */
+    transition: background-color 0.3s ease;
     position: relative;
     font-weight: bolder;
     z-index: 2;
@@ -66,8 +61,6 @@ button:hover {
     display: flex;
     flex-direction: column;
     padding: 3%;
-    /* width: 25%;
-    height: 35%; */
     border-radius: 20px;
     background-color: rgba(255, 213, 184, 0.9);
     z-index: 2;
@@ -77,8 +70,6 @@ button:hover {
     flex-direction: column;
     padding: 3%;
     height: 340px;
-    /* width: 25%;
-    height: 35%; */
     border-radius: 20px;
     background-color: rgba(255, 213, 184, 0.9);
     z-index: 2;
@@ -100,12 +91,10 @@ button:hover {
 }
 
 .photo-container {
-    width: 20%;
     display: flex;
     align-items: center;
     justify-content: end;
     right: 0;
-    /* background-color: black; */
 }
 
 .user-photo {
@@ -120,19 +109,15 @@ button:hover {
 .scrollable-field {
     width: 95%;
     height: 150px;
-    overflow: auto; /* Set overflow property to auto for scrollbars */
-    /* border: 1px solid #ccc; Optional: Add border for styling */
-    padding: 10px; /* Optional: Add padding for spacing */
+    overflow: auto;
+    padding: 10px;
 }
 
 .one-vacancy {
-    /* display: flex; */
     width: 26%;
     height: 350px;
     z-index: 2;
     margin-bottom: 20px;
-    /* background-color: aqua; */
-    /* position: relative; */
 }
 
 .vacancies {
@@ -140,9 +125,7 @@ button:hover {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    /* justify-content: space-around; */
     gap: 11%;
-    /* align-items: baseline; */
 }
 p {
     font-size: 15px;

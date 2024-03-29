@@ -10,10 +10,8 @@ body {
     right: 0;
     width: 50%;
     height: 100%;
-    /* background-image: url('uku_logo___seal_engl 1.svg'); */
     background-size: cover;
     background-position: right;
-    /* opacity: 1; */
 }
 .backImage{
     position: absolute;
@@ -46,11 +44,11 @@ body {
     box-sizing: border-box;
 }
 .login-container .input-group1 {
-    width: 100%; /* Each input-group takes full width */
-    display: flex; /* Added to make each input-group flexbox */
-    justify-content: space-between; /* Added to evenly distribute children */
-    margin-bottom: 10px; /* Added space between input-groups */
-    flex-direction: column; /* Arrange text and input in a column */
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    flex-direction: column;
     align-items: flex-start;
 }
 .for-pp{
@@ -63,7 +61,6 @@ body {
     width: 100%;
     align-items: flex-start;
     flex-grow: 4;
-    /* justify-content: space-between; */
 }
 .fields {
     display: flex;
@@ -78,30 +75,14 @@ body {
 
 .back-button img {
     display: block;
-    width: 40px; /* Adjust the width as needed */
-    height: auto; /* Maintain aspect ratio */
+    width: 40px;
+    height: auto;
 }
 
 .back-button:hover {
     cursor: pointer;
 }
-/* .login-container button {
-    width: 50%;
-    padding: 10px;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    margin-left: 500;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    background-color: rgba(242, 80, 25, 1);
-    color: #FFFFFF;
-    font-family: 'Amiko';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 27px;
-} */
+
 .top-container {
     display: flex;
     flex-direction: row;
@@ -118,13 +99,10 @@ body {
     box-sizing: border-box;
     background-color: rgba(242, 80, 25, 1);
     color: #FFFFFF;
-    
-    /* font-family: 'Amiko'; */
     font-style: normal;
     font-weight: 700;
     font-size: 20px;
     line-height: 27px;
-    /* identical to box height */
 }
 
 .button-container {
