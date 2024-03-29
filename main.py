@@ -12,6 +12,7 @@ from google.oauth2 import service_account
 from googleapiclient.http import MediaFileUpload
 import tempfile
 import os
+from werkzeug.security import generate_password_hash, check_password_hash
 
 
 uri = "mongodb+srv://Sofia:cfvgfhf1601@cluster0.zw63kf1.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
@@ -96,7 +97,7 @@ def verify():
             if session['types'] == "reset":
                 user = collection.find_one({'email': session['email']})
                 if user:
-                    collection.update_one({'_id': user['_id']}, {'$set': {'password': session["password"]}})
+                    collection.update_one({'_id': user['_id']}, {'$set': {'password': generate_password_hash(session["password"])}})
                     session['user_data'] = user
                     data = session['user_data']
                     if '_id' in session['user_data']:
@@ -108,7 +109,7 @@ def verify():
                 'name': session['name'],
                 'surname': session['surname'],
                 'email': session['email'],
-                'password': session['password'],
+                'password': generate_password_hash(session['password']),
                 'company_name': session['company_name'],
                 'profile_image': session.get('profile_image'),
                 'type': 'employer'
@@ -265,7 +266,7 @@ def register_student2():
             'surname': session.get('surname'),
             'email': session.get('email'),
             'age': session.get('age'),
-            'password': session.get('password'),
+            'password': generate_password_hash(session.get('password')),
             'experience_it': session.get('experience_it'),
             'academic_degree': session.get('academic_degree'),
             'profile_image': session.get('profile_image'),
@@ -287,7 +288,7 @@ def login():
 
         user = collection.find_one({'email': email})
 
-        if user and user['password'] == password:
+        if user and check_password_hash(user['password'], password):
             session['user_data'] = user
             if '_id' in session['user_data']:
                 user['_id'] = str(session['user_data']['_id'])
