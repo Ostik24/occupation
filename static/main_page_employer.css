@@ -97,6 +97,7 @@ button:hover {
     position: relative;
     flex-direction: column;
     padding: 3%;
+    height: 340px;
     /* width: 25%;
     height: 35%; */
     border-radius: 20px;
@@ -104,6 +105,39 @@ button:hover {
     z-index: 2;
     /* margin-bottom: 5%; */
     /* overflow: auto; */
+}
+
+.photo-text-container {
+    display: flex;
+    flex-direction: row;
+    z-index: 2;
+}
+
+.text-in-photo {
+    width: 80%;
+}
+
+.contact {
+    display: flex;
+    flex-direction: column;
+}
+
+.photo-container {
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    right: 0;
+    /* background-color: black; */
+}
+
+.user-photo {
+    border-radius: 50%;
+    object-fit: cover;
+    z-index: 2;
+    width: 100px;
+    height: 100px;
+    right: 1%;
 }
 
 .scrollable-field {

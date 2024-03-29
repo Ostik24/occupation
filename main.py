@@ -392,7 +392,7 @@ def main_page():
 def main_page_employer():
     students = collection.find({'type': 'student'})
     students = list(students)
-    return render_template('main_page_employer.html', students=students)
+    return render_template('main_page_employer.html', students=students, collection=collection)
 
 @app.route('/sign_up_next')
 def student_next():

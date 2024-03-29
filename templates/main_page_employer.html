@@ -33,13 +33,26 @@
             </div>
             <div class="vacancy-detailed" id="vacancy{{ loop.index }}-detailed">
                 <p style="font-size: 25px; font-weight: bold; margin: 0;">{{ student["name"] }}</p>
-                <p style="font-size: 15px; margin-top: 0;">{{ student["surname"] }}</p>
-                <p>Contact information</p>
-                <span>{{ student["email"] }}</span>
-                {% if student['phone'] %}
-                <span>{{ student["phone"] }}</span>
-                {% endif %}
-                <p>Description</p>
+                <div class="photo-text-container">
+                    <div class="text-in-photo">
+                        <p style="font-size: 15px; margin-top: 0;">{{ student["surname"] }}</p>
+                        <p>Contact information</p>
+                        <div class="contact">
+                            <span>{{ student["email"] }}</span>
+                            {% if student['phone'] %}
+                            <span>{{ student["phone"] }}</span>
+                            {% endif %}
+                        </div>
+                        <p>Description</p>
+                    </div>
+                    <div class="photo-container">
+                        {% if collection.find_one({'email': student["email"]})['profile_image'] %}
+                            <img class="user-photo" src="{{ collection.find_one({'email': student['email']})['profile_image'] }}">
+                        {% else %}
+                            <img class="user-photo" src="/static/Photo.svg">
+                        {% endif %}
+                    </div>
+                </div>
                 <div class="scrollable-field">
                     <p>{{ student["description"] }}</p>
                 </div>
